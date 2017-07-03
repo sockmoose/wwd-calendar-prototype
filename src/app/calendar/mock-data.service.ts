@@ -10,9 +10,11 @@ const DATA = {
 
 @Injectable()
 export class MockDataService {
-  getPickupData(month: number, year: number): any {
+  getPickupData(month: number, year: number): Promise<any> {
     if (month === 7 && year === 2017) {
-      return DATA;
+      return Promise.resolve(DATA);
+    } else {
+      return Promise.reject('No data for given month');
     }
   }
 }
